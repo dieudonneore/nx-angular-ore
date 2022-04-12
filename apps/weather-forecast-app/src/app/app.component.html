@@ -1,1 +1,90 @@
-<workspace-ore-nx-welcome></workspace-ore-nx-welcome>
+
+<div class="wrapper">
+    <div class="container">
+      <!--  WELCOME  -->
+      <div id="welcome">
+        <h1>
+          <span> Hello World, </span>
+          Welcome to my weather-forecast 👋
+        </h1>
+
+      </div>
+      <br>
+
+      <!-- Search bar -->
+      <div class="container">
+
+        <div class="searchbarandbtn">
+
+          <div class="search">
+            <input type="text" placeholder="PLEASE ENTER YOUR CITY ..." [(ngModel)]="city">
+          </div>
+
+          <div class="btnContainer" (click)="getCoordonate()">
+            <div class="myLabel">SEARCH</div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!--  MIDDLE CONTENT  -->
+      <div id="middle-content">
+        <div id="learning-materials" class="rounded shadow" [style.color]="color" (click)="hourlyMode()">
+          <h2>HOURLY</h2>
+        </div>
+
+        <div id="learning-materials" class="rounded shadow" [style.color]="color1" (click)="dailyMode()">
+          <h2>DAILY</h2>
+        </div>
+
+      </div>
+
+      <!--  COMMANDS  -->
+      <div id="commands" class="rounded shadow">
+
+       <table id="customers" *ngIf="mode===1" >
+        <tr>
+          <th>City Name</th>
+          <th>03:00</th>
+          <th>06:00</th>
+          <th>09:00</th>
+          <th>12:00</th>
+          <th>15:00</th>
+          <th>18:00</th>
+          <th>21:00</th>
+          <th>24:00</th>
+        </tr>
+        <tr *ngFor="let city of cities">
+          <td *ngFor="let h of city">{{h?.temp}}</td>
+        </tr>
+      </table>
+
+
+
+      <table id="customerd" *ngIf="mode===2">
+        <tr>
+          <th>City Name</th>
+          <th>Mo</th>
+          <th>Tu</th>
+          <th>We</th>
+          <th>Th</th>
+          <th>Fr</th>
+          <th>Sa</th>
+          <th>Su</th>
+        </tr>
+        <tr *ngFor="let mday of myDays">
+          <td *ngFor="let h of mday">{{h?.temp.day}}</td>
+        </tr>
+      </table>
+
+
+      <div class="container" *ngIf="mode===3">
+        <p>NO DATA FOUND FOR THIS ENTRY</p>
+      </div>
+
+
+      </div>
+    </div>
+  </div>
+
